@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de reservas de aulas</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header>
+    <h1>Gestión de reservas de aulas</h1>
+    <p>Consulta y administra las aulas del centro</p>
+</header>
+
+<main>
+    <nav>
+        <a href="#aulas">Aulas</a>
+        <a href="#profesores">Profesores</a>
+        <a href="#franjas">Franjas horarias</a>
+        <a href="#reservas">Reservas</a>
+    </nav>
+
+    <section id="aulas">
+        <h2>Aulas</h2>
+        <h3>Crear o modificar aula</h3>
+        <form id="formAula">
+            <input type="hidden" id="aulaId">
+            <label>Nombre
+                <input id="aulaNombre" type="text" required placeholder="Aula 101">
+            </label>
+            <label>Capacidad
+                <input id="aulaCapacidad" type="number" min="1" required>
+            </label>
+            <label>Ordenadores
+                <select id="aulaOrdenadores">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </label>
+            <button type="submit">Guardar aula</button>
+            <button type="button" class="secundario" id="limpiarAula">
+                Cancelar edición
+            </button>
+        </form>
+        <p id="mensajeAula" class="mensaje"></p>
+
+        <h3>Buscar aulas</h3>
+        <div class="controles">
+            <label>Ordenadores
+                <select id="filtroOrdenadores">
+                    <option value="">Todas</option>
+                    <option value="true">Con ordenadores</option>
+                    <option value="false">Sin ordenadores</option>
+                </select>
+            </label>
+            <label>Capacidad superior a
+                <input id="filtroCapacidad" type="number" min="0" placeholder="Ej. 20">
+            </label>
+            <button type="button" id="buscarAulas">Buscar</button>
+            <button type="button" class="secundario" id="todasAulas">
+                Mostrar todas
+            </button>
+        </div>
+        <div id="listaAulas" class="lista"></div>
+    </section>
+
+    <section id="profesores">
+        <h2>Profesores</h2>
+        <form id="formProfesor">
+            <input type="hidden" id="profesorId">
+            <label>Nombre
+                <input id="profesorNombre" type="text" required>
+            </label>
+            <label>Apellidos
+                <input id="profesorApellidos" type="text" required>
+            </label>
+            <label>Email
+                <input id="profesorEmail" type="email" required>
+            </label>
+            <button type="submit">Guardar profesor</button>
+            <button type="button" class="secundario" id="limpiarProfesor">
+                Cancelar edición
+            </button>
+        </form>
+        <p id="mensajeProfesor" class="mensaje"></p>
+        <button type="button" class="secundario" id="recargarProfesores">
+            Actualizar listado
+        </button>
+        <div id="listaProfesores" class="lista"></div>
+    </section>
+
+    <section id="franjas">
+        <h2>Franjas horarias</h2>
+        <form id="formFranja">
+            <input type="hidden" id="franjaId">
+            <label>Hora inicio
+                <input id="franjaInicio" type="time" required>
+            </label>
+            <label>Hora fin
+                <input id="franjaFin" type="time" required>
+            </label>
+            <button type="submit">Guardar franja</button>
+            <button type="button" class="secundario" id="limpiarFranja">
+                Cancelar edición
+            </button>
+        </form>
+        <p id="mensajeFranja" class="mensaje"></p>
+        <button type="button" class="secundario" id="recargarFranjas">
+            Actualizar listado
+        </button>
+        <div id="listaFranjas" class="lista"></div>
+    </section>
+
+    <section id="reservas">
+        <h2>Reservas</h2>
+        <p class="ayuda">
+            Primero crea un aula, un profesor y una franja horaria.
+        </p>
+        <form id="formReserva">
+            <input type="hidden" id="reservaId">
+            <label>Fecha
+                <input id="reservaFecha" type="date" required>
+            </label>
+            <label>Aula
+                <select id="reservaAula" required></select>
+            </label>
+            <label>Profesor
+                <select id="reservaProfesor" required></select>
+            </label>
+            <label>Franja
+                <select id="reservaFranja" required></select>
+            </label>
+            <button type="submit">Guardar reserva</button>
+            <button type="button" class="secundario" id="limpiarReserva">
+                Cancelar edición
+            </button>
+        </form>
+        <p id="mensajeReserva" class="mensaje"></p>
+        <button type="button" class="secundario" id="recargarReservas">
+            Actualizar listado
+        </button>
+        <div id="listaReservas" class="lista"></div>
+    </section>
+</main>
+
+<footer>Proyecto Gestión de Aulas · 2.º DAM</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
